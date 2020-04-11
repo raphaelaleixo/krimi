@@ -10,8 +10,7 @@
           color="primary"
           :disabled="!players || players.length < 5"
           @click="startGame"
-          >Start game</v-btn
-        >
+        >Start game</v-btn>
       </v-col>
       <v-spacer />
       <v-col cols="12" md="3">
@@ -21,9 +20,8 @@
             background: '#fff',
             foreground: '#091619',
           }"
-          :value="`http://criminalmind.ludoratory.com/join?room=${game.gameId}`"
-        >
-        </qrcode>
+          :value="`${location}/join?room=${game.gameId}`"
+        ></qrcode>
       </v-col>
     </v-row>
   </v-container>
@@ -38,10 +36,13 @@ export default {
     game() {
       return this.$store.state.game;
     },
+    location() {
+      return window.location.origin;
+    },
     players() {
       if (!this.game || !this.game.players) return false;
       return Object.keys(this.game.players).map(
-        (item) => this.game.players[item]
+        item => this.game.players[item]
       );
     },
     playerCount() {
@@ -49,17 +50,17 @@ export default {
       else if (!this.game || !this.game.players)
         return `${this.players.length} player joined.`;
       else return `${this.players.length} players joined.`;
-    },
+    }
   },
   methods: {
     async startGame() {
       await this.$store.dispatch("startGame", {
         game: this.game.gamekey,
         players: this.players,
-        detective: this.active,
+        detective: this.active
       });
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

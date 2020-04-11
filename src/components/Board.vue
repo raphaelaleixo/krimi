@@ -1,17 +1,22 @@
 <template>
   <v-container>
     <v-row>
+      <v-col cols="12">
+        <v-alert type="error" v-model="game.finished">The game is finshed. The {{game.winner}} won!</v-alert>
+      </v-col>
       <v-col md="9">
         <v-row>
-          <v-col
-            v-for="player in suspects"
-            :key="player.playerkey"
-            md="6"
-            xl="3"
-          >
+          <v-col cols="12">
+            <div class="display-1">Game {{game.gameId}} - Round {{game.round}}/3</div>
+          </v-col>
+          <v-col v-for="player in suspects" :key="player.playerkey" md="6" xl="3">
             <v-card height="100%">
-              <v-card-title> {{ player.name }}</v-card-title>
               <v-card-text>
+                <div class="title">{{player.name}}</div>
+                <div v-if="game.passedTurns && game.passedTurns[player.index]">Passed this turn</div>
+                <div
+                  v-if="game.guesses && game.guesses[player.index]"
+                >Guessed that the murderer was {{players[game.guesses[player.index].player].name}}, the mean was {{game.guesses[player.index].mean}} and the key evidence was {{game.guesses[player.index].key}}</div>
                 <v-chip-group column>
                   <v-chip
                     small
@@ -21,9 +26,7 @@
                       player.index * 4 + 4
                     )"
                     :key="index"
-                  >
-                    {{ mean }}
-                  </v-chip>
+                  >{{ mean }}</v-chip>
                 </v-chip-group>
                 <v-chip-group column>
                   <v-chip
@@ -34,9 +37,7 @@
                       player.index * 4 + 4
                     )"
                     :key="'clue' + index"
-                  >
-                    {{ mean }}
-                  </v-chip>
+                  >{{ mean }}</v-chip>
                 </v-chip-group>
               </v-card-text>
             </v-card>
@@ -45,16 +46,17 @@
       </v-col>
       <v-col md="3">
         <v-card>
-          <v-card-title>Forensic Analysis</v-card-title>
-          <v-list-item
-            two-line
-            v-for="(item, index) in game.forensicAnalysis"
-            :key="'fa' + index"
-          >
+          <v-card-title>
+            Forensic Analysis by
+            <span>{{players[game.detective].name}}</span>
+          </v-card-title>
+          <v-list-item two-line v-for="(item, index) in game.forensicAnalysis" :key="'fa' + index">
             <v-list-item-content>
-              <v-list-item-title>{{
+              <v-list-item-title>
+                {{
                 game.analysis[index].title
-              }}</v-list-item-title>
+                }}
+              </v-list-item-title>
               <v-list-item-subtitle>{{ item }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
@@ -74,13 +76,13 @@ export default {
     players() {
       if (!this.game || !this.game.players) return false;
       return Object.keys(this.game.players).map(
-        (item) => this.game.players[item]
+        item => this.game.players[item]
       );
     },
     suspects() {
-      return this.players.filter((item) => item.index !== this.game.detective);
-    },
-  },
+      return this.players.filter(item => item.index !== this.game.detective);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
