@@ -1,7 +1,13 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <v-toolbar-title class="headline">Criminal Minds</v-toolbar-title>
+    <v-app-bar elevate-on-scroll app color="rgba(0,0,0,0)">
+      <img
+        src="~@/assets/logo.svg"
+        max-width="136"
+        class="mt-4 mb-2"
+        height="38"
+        contain
+      />
     </v-app-bar>
     <v-content>
       <router-view />
@@ -11,12 +17,25 @@
 
 <script>
 export default {
-  name: "App",
-
-  components: {},
-
-  data: () => ({
-    //
-  }),
+  name: "App"
 };
 </script>
+
+<style lang="scss">
+.v-application {
+  &.theme--light {
+    background: url("~@/assets/bg.png") no-repeat fixed top center !important;
+    background-size: cover;
+    color: $black;
+    .v-btn {
+      font-weight: bolder;
+    }
+  }
+  .display-2 {
+    color: $darkblue;
+  }
+  .v-app-bar--is-scrolled {
+    background-color: white !important;
+  }
+}
+</style>

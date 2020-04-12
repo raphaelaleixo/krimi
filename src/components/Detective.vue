@@ -8,33 +8,38 @@
               small
               color="blue lighten-4"
               v-for="(mean, index) in [...game.means].slice(
-                      player.index * 4,
-                      player.index * 4 + 4
-                    )"
+                player.index * 4,
+                player.index * 4 + 4
+              )"
               :key="index"
-            >{{ mean }}</v-chip>
+              >{{ mean }}</v-chip
+            >
           </v-chip-group>
           <v-chip-group column>
             <v-chip
               small
               color="red lighten-4"
               v-for="(mean, index) in [...game.clues].slice(
-                      player.index * 4,
-                      player.index * 4 + 4
-                    )"
+                player.index * 4,
+                player.index * 4 + 4
+              )"
               :key="'clue' + index"
-            >{{ mean }}</v-chip>
+              >{{ mean }}</v-chip
+            >
           </v-chip-group>
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="sheet = !sheet" text>View role</v-btn>
-          <v-btn @click="passTurn" :disabled="disableActions" text>Pass turn</v-btn>
+          <v-btn @click="sheet = !sheet" text>Role</v-btn>
+          <v-btn @click="passTurn" :disabled="disableActions" text
+            >Pass turn</v-btn
+          >
           <v-btn
             @click="solve = !solve"
-            color="primary"
+            color="accent"
             :disabled="disableActions"
             text
-          >Solve the crime</v-btn>
+            >Solve</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-col>
@@ -43,12 +48,16 @@
         <v-container>
           <v-btn class="mt-6" dark @click="sheet = !sheet">close</v-btn>
           <p class="headline mt-4">Your are {{ playerRole }}</p>
-          <murderer-choice v-if="player.index === game.murderer" :game="game" :player="player" />
+          <murderer-choice
+            v-if="player.index === game.murderer"
+            :game="game"
+            :player="player"
+          />
         </v-container>
       </v-sheet>
     </v-bottom-sheet>
     <v-bottom-sheet inset v-model="solve">
-      <v-sheet class="text-center" height="500px">
+      <v-sheet class="text-center" height="700px">
         <v-container>
           <v-btn class="mt-6" dark @click="solve = !solve">close</v-btn>
           <p class="headline mt-4">Solve the crime</p>
@@ -72,16 +81,18 @@
                         <v-chip
                           small
                           style="opacity: 1"
-                          :class="{'v-chip--active':guess.mean === mean}"
+                          :class="{ 'v-chip--active': guess.mean === mean }"
                           @click="guess.mean = mean"
                           color="blue lighten-4"
                           v-for="(mean, index) in [...game.means].slice(
-                      selectedPlayer.index * 4,
-                      selectedPlayer.index * 4 + 4
-                    )"
+                            selectedPlayer.index * 4,
+                            selectedPlayer.index * 4 + 4
+                          )"
                           :key="index"
                         >
-                          <v-icon class="mr-1" small v-if="guess.mean === mean">mdi-check</v-icon>
+                          <v-icon class="mr-1" small v-if="guess.mean === mean"
+                            >mdi-check</v-icon
+                          >
                           {{ mean }}
                         </v-chip>
                       </v-chip-group>
@@ -94,16 +105,18 @@
                         <v-chip
                           small
                           style="opacity: 1"
-                          :class="{'v-chip--active':guess.key === clue}"
+                          :class="{ 'v-chip--active': guess.key === clue }"
                           @click="guess.key = clue"
                           color="red lighten-4"
                           v-for="(clue, index) in [...game.clues].slice(
-                      selectedPlayer.index * 4,
-                      selectedPlayer.index * 4 + 4
-                    )"
+                            selectedPlayer.index * 4,
+                            selectedPlayer.index * 4 + 4
+                          )"
                           :key="index"
                         >
-                          <v-icon class="mr-1" small v-if="guess.key === clue">mdi-check</v-icon>
+                          <v-icon class="mr-1" small v-if="guess.key === clue"
+                            >mdi-check</v-icon
+                          >
                           {{ clue }}
                         </v-chip>
                       </v-chip-group>
@@ -191,5 +204,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

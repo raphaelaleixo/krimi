@@ -1,32 +1,27 @@
 <template>
-  <v-container>
-    <v-row justify="center">
-      <!-- <v-col cols="12" md="7">
-        <v-alert type="error" dismissible v-if="hasError">
-          {{ errorText }}
-        </v-alert>
-      </v-col>-->
-      <v-col class="mt-6" cols="12" md="6">
-        <h2 class="display-1">A Realtime, Multiplayer Boardgame!</h2>
-        <p class="subtitle-1 mb-4">
-          Select the number of players, the size of your game board and start
-          playing now!
+  <v-container style="height:100%">
+    <v-row style="height:100%" align="center">
+      <v-col class="mb-10 offset-xl-1" cols="12" lg="6" xl="4">
+        <h2 class="display-2">A game of deduction and deception.</h2>
+        <p class="subtitle-1 my-6">
+          In the game, players take on the roles of investigators attempting to
+          solve a murder case – but there's a twist. The killer is one of the
+          investigators! Find out who among you can cut through deception to
+          find the truth and who is capable of getting away with murder!
         </p>
-        <v-row align="center">
-          <v-col cols="12" md="5">
-            <v-btn type="submit" width="100%" large to="/join">Join game</v-btn>
-          </v-col>
-          <v-col cols="12" md="5">
-            <v-btn
-              @click.prevent="createNewGame"
-              width="100%"
-              type="submit"
-              large
-              color="primary"
-              >Create new game</v-btn
-            >
-          </v-col>
-        </v-row>
+        <div class="d-flex">
+          <v-btn type="submit" color="grey lighten-5" large to="/join"
+            >Join game</v-btn
+          >
+          <v-btn
+            class="ml-lg-4"
+            @click.prevent="createNewGame"
+            type="submit"
+            large
+            color="accent"
+            >Create new game</v-btn
+          >
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -39,7 +34,7 @@ export default {
     async createNewGame() {
       const game = await this.$store.dispatch("createGame");
       this.$router.push("/game/" + game.gameId);
-    },
-  },
+    }
+  }
 };
 </script>

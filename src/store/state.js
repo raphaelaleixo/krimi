@@ -1,4 +1,4 @@
 export default {
   game: null,
-  player: null,
+  player: null
 };

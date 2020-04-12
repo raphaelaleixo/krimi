@@ -14,15 +14,11 @@ export default {
   computed: {
     game() {
       return this.$store.state.game;
-    },
+    }
   },
   mounted() {
     this.$store.dispatch("loadGame", this.$route.params.id);
-  },
+  }
 };
 </script>
-<style lang="scss" scoped>
-canvas {
-  max-width: 100%;
-}
-</style>
+<style lang="scss" scoped></style>

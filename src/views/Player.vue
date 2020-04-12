@@ -1,11 +1,26 @@
 <template>
   <v-container v-if="player">
-    <v-row>
-      <v-col class="mt-6" cols="12">
-        <h2 class="display-1">Hello, {{ player.name }}!</h2>
+    <v-row class="mt-10">
+      <v-col cols="12" lg="6">
+        <h2 class="display-2">{{ player.name }}</h2>
+        <div v-if="!game.started">
+          <p class="subtitle-1 my-4">
+            You are in room
+            <code class="accent--text text-uppercase">{{ game.gameId }}</code
+            >. Waiting for the game start.
+          </p>
+          <v-progress-linear
+            indeterminate
+            rounded
+            color="accent"
+          ></v-progress-linear>
+        </div>
       </v-col>
     </v-row>
-    <forensic-analysis v-if="player.index === game.detective" :game="game" />
+    <forensic-analysis
+      v-if="game.started && player.index === game.detective"
+      :game="game"
+    />
     <detective v-else-if="game.started" :game="game" :player="player" />
   </v-container>
 </template>

@@ -16,6 +16,7 @@ export default {
       players: {},
       detective: 0,
       gamekey,
+      finished: false,
       availableClues: 6,
       round: 1
     };
@@ -139,7 +140,7 @@ export default {
     ) {
       await database.ref(`/${payload.game}`).update({
         finished: true,
-        winner: "detective"
+        winner: "detectives"
       });
     } else if (validGuesses.length === players - 1) {
       await database.ref(`/${payload.game}`).update({
