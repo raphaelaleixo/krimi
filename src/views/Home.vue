@@ -9,7 +9,7 @@
             :text="['deception', 'deduction']"
             erase-style="backspace"
             :type-delay="120"
-          />.
+          />
         </h2>
         <p class="subtitle-1 mt-4 mb-10">
           In the game, players take on the roles of investigators attempting to
@@ -66,5 +66,10 @@ export default {
 }
 .vue-typer .custom.caret {
   background-color: #094067;
+}
+@media screen and (max-width: 600px) {
+  .vue-typer {
+    display: block;
+  }
 }
 </style>
