@@ -8,20 +8,13 @@ export default [
       "Loss of blood",
       "Illness/disease",
       "Posioning",
-      "Accident",
-    ],
+      "Accident"
+    ]
   },
   {
     title: "Location of crime",
     type: 1,
-    options: [
-      "Vacation home",
-      "Park",
-      "Supermarket",
-      "School",
-      "Woods",
-      "Bank",
-    ],
+    options: ["Vacation home", "Park", "Supermarket", "School", "Woods", "Bank"]
   },
   {
     title: "Location of crime",
@@ -32,8 +25,8 @@ export default [
       "Restaurant",
       "Hotel",
       "Hospital",
-      "Building site",
-    ],
+      "Building site"
+    ]
   },
   {
     title: "Location of crime",
@@ -44,8 +37,8 @@ export default [
       "Dormitory",
       "Cafeteria",
       "Elevator",
-      "Toilet",
-    ],
+      "Toilet"
+    ]
   },
   {
     title: "Location of crime",
@@ -56,8 +49,8 @@ export default [
       "Storeroom",
       "Bathroom",
       "Kitchen",
-      "Balcony",
-    ],
+      "Balcony"
+    ]
   },
   {
     title: "Sudden Incident",
@@ -68,8 +61,8 @@ export default [
       "Conflict",
       "Loss of Valuables",
       "Scream",
-      "Nothing",
-    ],
+      "Nothing"
+    ]
   },
   {
     title: "In Progress",
@@ -80,13 +73,13 @@ export default [
       "Assembly",
       "Trading",
       "Visit",
-      "Dining",
-    ],
+      "Dining"
+    ]
   },
   {
     title: "Time of Death",
     type: 2,
-    options: ["Dawn", "Morning", "Noon", "Afternoon", "Evening", "Midnight"],
+    options: ["Dawn", "Morning", "Noon", "Afternoon", "Evening", "Midnight"]
   },
   {
     title: "Victim's Occupation",
@@ -97,8 +90,8 @@ export default [
       "Worker",
       "Student",
       "Unemployed",
-      "Retired",
-    ],
+      "Retired"
+    ]
   },
   {
     title: "Duration of Crime",
@@ -109,13 +102,13 @@ export default [
       "Gradual",
       "Prolonged",
       "Few days",
-      "Unclear",
-    ],
+      "Unclear"
+    ]
   },
   {
     title: "Victim's Clothes",
     type: 2,
-    options: ["Neat", "Untidy", "Elegant", "Shabby", "Bizarre", "Naked"],
+    options: ["Neat", "Untidy", "Elegant", "Shabby", "Bizarre", "Naked"]
   },
   {
     title: "General impression",
@@ -126,8 +119,8 @@ export default [
       "Fishy",
       "Cruel",
       "Horrrible",
-      "Suspenseful",
-    ],
+      "Suspenseful"
+    ]
   },
   {
     title: "State of the scene",
@@ -138,8 +131,8 @@ export default [
       "Water stain",
       "Cracked",
       "Disorderly",
-      "Tidy",
-    ],
+      "Tidy"
+    ]
   },
   {
     title: "Murderer's Personality",
@@ -150,8 +143,8 @@ export default [
       "Furious",
       "Greedy",
       "Forceful",
-      "Perverted",
-    ],
+      "Perverted"
+    ]
   },
   {
     title: "Trace at the Scene",
@@ -162,8 +155,8 @@ export default [
       "Bruise",
       "Blood stain",
       "Body fluid",
-      "Scar",
-    ],
+      "Scar"
+    ]
   },
   {
     title: "Social relationship",
@@ -174,25 +167,18 @@ export default [
       "Colleagues",
       "Employer/employee",
       "Lovers",
-      "Strangers",
-    ],
+      "Strangers"
+    ]
   },
   {
     title: "In Progress",
     type: 2,
-    options: [
-      "Vacation home",
-      "Park",
-      "Supermarket",
-      "School",
-      "Woods",
-      "Bank",
-    ],
+    options: ["Vacation home", "Park", "Supermarket", "School", "Woods", "Bank"]
   },
   {
     title: "Weather",
     type: 2,
-    options: ["Sunny", "Stormy", "Dry", "Humid", "Cold", "Hot"],
+    options: ["Sunny", "Stormy", "Dry", "Humid", "Cold", "Hot"]
   },
   {
     title: "Corpse condition",
@@ -203,28 +189,28 @@ export default [
       "Decayed",
       "Incomplete",
       "Intact",
-      "Twisted",
-    ],
+      "Twisted"
+    ]
   },
   {
     title: "Hint on corpse",
     type: 2,
-    options: ["Head", "Chest", "Arm", "Leg", "Partial", "All over"],
+    options: ["Head", "Chest", "Arm", "Leg", "Partial", "All over"]
   },
   {
     title: "Motive of Crime",
     type: 2,
-    options: ["Hatred", "Power", "Money", "Love", "Jealousy", "Justice"],
+    options: ["Hatred", "Power", "Money", "Love", "Jealousy", "Justice"]
   },
   {
     title: "Victim's Build",
     type: 2,
-    options: ["Large", "Thin", "Tall", "Short", "Disfigured", "Fit"],
+    options: ["Large", "Thin", "Tall", "Short", "Disfigured", "Fit"]
   },
   {
     title: "Day of Crime",
     type: 2,
-    options: ["Weekday", "Weekend", "Spring", "Summer", "Autumn", "Winter"],
+    options: ["Weekday", "Weekend", "Spring", "Summer", "Autumn", "Winter"]
   },
   {
     title: "Evidence left Behind",
@@ -235,20 +221,13 @@ export default [
       "Written",
       "Synthetic",
       "Personal",
-      "Unrelated",
-    ],
+      "Unrelated"
+    ]
   },
   {
     title: "Victim's Identity",
     type: 2,
-    options: [
-      "Child",
-      "Young Adult",
-      "Middle-aged",
-      "Senior",
-      "Male",
-      "Female",
-    ],
+    options: ["Child", "Young Adult", "Middle-aged", "Senior", "Male", "Female"]
   },
   {
     title: "Victim's expression",
@@ -259,8 +238,8 @@ export default [
       "Frightened",
       "In Pain",
       "Blank",
-      "Andry",
-    ],
+      "Andry"
+    ]
   },
   {
     title: "Noticed by Bystander",
@@ -271,7 +250,7 @@ export default [
       "Smell",
       "Visual",
       "Action",
-      "Nothing",
-    ],
-  },
+      "Nothing"
+    ]
+  }
 ];

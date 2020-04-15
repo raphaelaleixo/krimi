@@ -18,7 +18,8 @@
                 width="100%"
                 v-model="gameId"
                 label="Game code"
-                outlined
+                filled
+                hide-details="auto"
                 required
               ></v-text-field>
             </v-col>
@@ -27,12 +28,18 @@
                 width="100%"
                 v-model="nickname"
                 label="Your nickname"
-                outlined
+                hide-details="auto"
+                filled
                 required
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="6">
-              <v-btn type="submit" x-large color="accent">Enter game</v-btn>
+            <v-col class="d-lg-flex" cols="12" md="6">
+              <v-btn class="mr-4 mb-4 mb-lg-0" x-large to="/">
+                <v-icon class="accent--text">mdi-arrow-left</v-icon>
+              </v-btn>
+              <v-btn class="mb-4" type="submit" x-large color="accent"
+                >Enter game</v-btn
+              >
             </v-col>
           </v-row>
         </form>

@@ -1,14 +1,5 @@
 <template>
   <v-app>
-    <v-app-bar elevate-on-scroll app color="rgba(0,0,0,0)">
-      <img
-        src="~@/assets/logo.svg"
-        max-width="136"
-        class="mt-4 mb-2"
-        height="38"
-        contain
-      />
-    </v-app-bar>
     <v-content>
       <router-view />
     </v-content>
@@ -17,7 +8,21 @@
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+  data: () => ({
+    links: [
+      {
+        title: "About this project",
+        url:
+          "https://medium.com/@raphaelaleixo/creating-codewords-a-real-time-multiplayer-boardgame-on-the-web-ca051071e75"
+      },
+      {
+        title: "How to play",
+        url:
+          "https://medium.com/@raphaelaleixo/creating-codewords-a-real-time-multiplayer-boardgame-on-the-web-ca051071e75"
+      }
+    ]
+  })
 };
 </script>
 

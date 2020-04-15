@@ -25,5 +25,5 @@ export default {
       taken[x] = --len in taken ? taken[len] : len;
     }
     return result;
-  },
+  }
 };

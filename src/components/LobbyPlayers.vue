@@ -1,6 +1,6 @@
 <template>
   <v-card class="mt-4">
-    <v-slide-y-transition group tag="v-list">
+    <v-slide-y-transition group>
       <v-list-item
         two-line
         v-for="(player, index) in players"

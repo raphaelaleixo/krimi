@@ -4,5 +4,5 @@ export default {
   },
   setPlayer(state, payload) {
     state.player = payload;
-  },
+  }
 };

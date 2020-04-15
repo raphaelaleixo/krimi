@@ -1,5 +1,5 @@
 <template>
-  <v-container v-if="player">
+  <v-container v-if="player && game">
     <v-row class="mt-10">
       <v-col cols="12" lg="6">
         <h2 class="display-2">{{ player.name }}</h2>

@@ -9,16 +9,18 @@
               small
               color="blue lighten-4"
               style="opacity: 1"
-              :class="{'v-chip--active':murdererChoice.mean === mean}"
+              :class="{ 'v-chip--active': murdererChoice.mean === mean }"
               @click="murdererChoice.mean = mean"
               :disabled="!!game.murdererChoice"
               v-for="(mean, index) in [...game.means].slice(
-                      player.index * 4,
-                      player.index * 4 + 4
-                    )"
+                player.index * 4,
+                player.index * 4 + 4
+              )"
               :key="index"
             >
-              <v-icon class="mr-1" small v-if="murdererChoice.mean === mean">mdi-check</v-icon>
+              <v-icon class="mr-1" small v-if="murdererChoice.mean === mean"
+                >mdi-check</v-icon
+              >
               {{ mean }}
             </v-chip>
           </v-chip-group>
@@ -33,17 +35,19 @@
             <v-chip
               small
               style="opacity: 1"
-              :class="{'v-chip--active':murdererChoice.key === clue}"
+              :class="{ 'v-chip--active': murdererChoice.key === clue }"
               @click="murdererChoice.key = clue"
               color="red lighten-4"
               :disabled="!!game.murdererChoice"
               v-for="(clue, index) in [...game.clues].slice(
-                      player.index * 4,
-                      player.index * 4 + 4
-                    )"
+                player.index * 4,
+                player.index * 4 + 4
+              )"
               :key="index"
             >
-              <v-icon class="mr-1" small v-if="murdererChoice.key === clue">mdi-check</v-icon>
+              <v-icon class="mr-1" small v-if="murdererChoice.key === clue"
+                >mdi-check</v-icon
+              >
               {{ clue }}
             </v-chip>
           </v-chip-group>
@@ -51,7 +55,11 @@
       </v-card>
     </v-col>
     <v-col class="mt-2" cols="12" v-if="!game.murdererChoice">
-      <v-btn @click="sendChoice" :disabled="!murdererChoice.mean || !murdererChoice.key">Send choice</v-btn>
+      <v-btn
+        @click="sendChoice"
+        :disabled="!murdererChoice.mean || !murdererChoice.key"
+        >Send choice</v-btn
+      >
     </v-col>
   </v-row>
 </template>
@@ -91,5 +99,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -197,5 +197,5 @@ export default [
   "Iron",
   "Eggs",
   "Love letter",
-  "Cassette tape",
+  "Cassette tape"
 ];

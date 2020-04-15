@@ -86,5 +86,5 @@ export default [
   "Drill",
   "Bamboo Tip",
   "Crutch",
-  "Illegal Drug",
+  "Illegal Drug"
 ];

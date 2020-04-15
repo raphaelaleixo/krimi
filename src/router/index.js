@@ -1,6 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Join from "../views/Join.vue";
+import Game from "../views/Game.vue";
+import Player from "../views/Player.vue";
 
 Vue.use(VueRouter);
 
@@ -13,17 +16,17 @@ const routes = [
   {
     path: "/join",
     name: "Join",
-    component: () => import("../views/Join.vue")
+    component: Join
   },
   {
     path: "/game/:id",
     name: "game",
-    component: () => import("../views/Game.vue")
+    component: Game
   },
   {
     path: "/game/:id/player/:slug",
     name: "player",
-    component: () => import("../views/Player.vue")
+    component: Player
   }
 ];
 

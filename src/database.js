@@ -7,7 +7,7 @@ const config = {
   projectId: "criminal-minds",
   storageBucket: "criminal-minds.appspot.com",
   messagingSenderId: "744849447046",
-  appId: "1:744849447046:web:b7d547afee68c2c96ed907",
+  appId: "1:744849447046:web:b7d547afee68c2c96ed907"
 };
 firebase.initializeApp(config);
 
