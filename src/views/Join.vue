@@ -1,11 +1,9 @@
 <template>
-  <v-container>
-    <v-row justify="center" class="mt-10">
-      <v-col cols="12" md="7">
-        <v-alert type="error" dismissible v-model="error">
-          {{ errorText }}
-        </v-alert>
-      </v-col>
+  <v-container style="height:100%">
+    <v-row style="height:100%" align="center" justify="center">
+      <v-alert type="error" dismissible v-model="error">
+        {{ errorText }}
+      </v-alert>
       <v-col class="mt-6" cols="12" md="6">
         <h2 class="display-2">Join game</h2>
         <p class="subtitle-1 my-4">

@@ -1,7 +1,7 @@
 <template>
-  <v-container>
-    <v-row class="mt-10" v-if="game">
-      <v-col cols="12" md="6">
+  <v-container style="height:100%">
+    <v-row style="height:100%" align="center" v-if="game">
+      <v-col class="mt-10 offset-xl-3" cols="12" md="6" xl="4">
         <h2 class="display-2">
           Lobby for room
           <code class="accent--text text-uppercase">{{
@@ -11,6 +11,8 @@
         <p class="subtitle-1 my-4">Waiting for players. {{ playerCount }}</p>
         <v-progress-linear
           indeterminate
+          absolute
+          bottom
           rounded
           color="accent"
         ></v-progress-linear>
@@ -24,8 +26,7 @@
           >Start game</v-btn
         >
       </v-col>
-      <v-spacer />
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="3" xl="2">
         <v-card>
           <v-card-text>
             <qrcode

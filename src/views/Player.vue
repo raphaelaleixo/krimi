@@ -1,9 +1,15 @@
 <template>
-  <v-container v-if="player && game">
-    <v-row class="mt-10">
+  <v-container style="height:100%" v-if="player && game">
+    <v-row
+      v-if="!game.started"
+      style="height:100%"
+      align="center"
+      justify="center"
+      class="mt-10"
+    >
       <v-col cols="12" lg="6">
-        <h2 class="display-2">{{ player.name }}</h2>
         <div v-if="!game.started">
+          <h2 class="display-2">{{ player.name }}</h2>
           <p class="subtitle-1 my-4">
             You are in room
             <code class="accent--text text-uppercase">{{ game.gameId }}</code
@@ -12,6 +18,8 @@
           <v-progress-linear
             indeterminate
             rounded
+            absolute
+            bottom
             color="accent"
           ></v-progress-linear>
         </div>
@@ -20,6 +28,7 @@
     <forensic-analysis
       v-if="game.started && player.index === game.detective"
       :game="game"
+      :player="player"
     />
     <detective v-else-if="game.started" :game="game" :player="player" />
   </v-container>

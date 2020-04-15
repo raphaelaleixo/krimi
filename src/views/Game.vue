@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <lobby v-if="game && !game.started" />
-    <board v-else-if="game && game.started" />
-  </div>
+  <lobby v-if="game && !game.started" />
+  <board v-else-if="game && game.started" />
 </template>
 
 <script>

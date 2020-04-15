@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-row>
+  <v-container style="height:100%">
+    <v-row style="height:100%">
       <v-col cols="12">
         <v-alert type="error" v-model="game.finished"
           >The game is finshed. The {{ game.winner }} won!</v-alert
@@ -35,6 +35,7 @@
                   mean was {{ game.guesses[player.index].mean }} and the key
                   evidence was {{ game.guesses[player.index].key }}
                 </div>
+                <v-divider class="my-2" />
                 <v-chip-group column>
                   <v-chip
                     small

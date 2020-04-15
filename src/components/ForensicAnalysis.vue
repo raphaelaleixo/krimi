@@ -1,70 +1,71 @@
 <template>
-  <div>
-    <v-row>
-      <v-col cols="12" lg="6">
-        <v-card v-if="game.murdererChoice">
-          <v-card-title>
-            {{ murderer.name }} used
-            <span class="blue--text mx-2"
-              >&nbsp;&nbsp;{{ game.murdererChoice.mean }}</span
-            >
-            to kill, and left behind
-            <span class="red--text mx-2"
-              >&nbsp;&nbsp;{{ game.murdererChoice.key }}</span
-            >
-            as a key evidence.
-          </v-card-title>
-        </v-card>
-        <v-card v-else>
-          <v-card-title style="word-break: inherit"
-            >{{ murderer.name }} is the murderer. Wait for means of murder and
-            key evidence.</v-card-title
-          >
-          <v-progress-linear
-            indeterminate
-            rounded
-            color="accent"
-          ></v-progress-linear>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row v-if="game.murdererChoice">
-      <v-col
-        cols="12"
-        md="6"
-        lg="3"
-        v-for="(item, index) in availableClues"
-        :key="index"
-      >
-        <v-card>
-          <v-card-text>
-            {{ item.title }}
-            <v-select
-              class="mt-2"
-              :disabled="
-                game.forensicAnalysis && !!game.forensicAnalysis[index]
-              "
-              :items="item.options"
-              v-model="analysis[index]"
-              :label="item.title"
-              solo
-            ></v-select>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <v-col class="mt-6" cols="12" v-if="game.murdererChoice">
-        <v-btn
-          @click="sendAnalysis"
-          :disabled="
-            analysis.length < availableClues.length ||
-              (game.forensicAnalysis &&
-                game.forensicAnalysis.length === availableClues.length)
-          "
-          >Send analysis</v-btn
+  <v-row style="height:100%" align="center" justify="center">
+    <v-col cols="12" lg="6" style="margin-top:auto;">
+      <h2 class="display-2 mb-4">{{ player.name }}</h2>
+      <div class="display-1" v-if="game.murdererChoice">
+        {{ murderer.name }} used
+        <span class="blue--text"
+          >&nbsp;&nbsp;{{ game.murdererChoice.mean }}</span
         >
-      </v-col>
-    </v-row>
-  </div>
+        to kill, and left behind
+        <span class="red--text">&nbsp;&nbsp;{{ game.murdererChoice.key }}</span>
+        as a key evidence.
+      </div>
+      <v-card v-else>
+        <v-card-title style="word-break: inherit"
+          >{{ murderer.name }} is the murderer. Wait for means of murder and key
+          evidence.</v-card-title
+        >
+      </v-card>
+      <v-progress-linear
+        v-if="!game.murdererChoice"
+        indeterminate
+        absolute
+        bottom
+        rounded
+        color="accent"
+      ></v-progress-linear>
+    </v-col>
+    <v-col cols="12" style="margin-bottom:auto;" v-if="game.murdererChoice">
+      <v-row>
+        <v-col
+          cols="12"
+          md="6"
+          lg="3"
+          v-for="(item, index) in availableClues"
+          :key="index"
+        >
+          <v-card>
+            <v-card-text>
+              {{ item.title }}
+              <v-select
+                class="mt-2"
+                :disabled="
+                  game.forensicAnalysis && !!game.forensicAnalysis[index]
+                "
+                :items="item.options"
+                v-model="analysis[index]"
+                :label="item.title"
+                solo
+              ></v-select>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col class="mt-6" cols="12" v-if="game.murdererChoice">
+          <v-btn
+            @click="sendAnalysis"
+            x-large
+            :disabled="
+              analysis.length < availableClues.length ||
+                (game.forensicAnalysis &&
+                  game.forensicAnalysis.length === availableClues.length)
+            "
+            >Send analysis</v-btn
+          >
+        </v-col>
+      </v-row>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -74,6 +75,10 @@ export default {
   }),
   props: {
     game: {
+      type: Object,
+      required: true
+    },
+    player: {
       type: Object,
       required: true
     }

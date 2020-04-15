@@ -1,5 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Serif:wght@600&display=swap");
+@font-face {
+  font-family: "kingthings_trypewriter_2Rg";
+  src: url("~@/assets/kingthings_trypewriter_2-webfont.woff2") format("woff2"),
+    url("~@/assets/kingthings_trypewriter_2-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700");
 $body-font-family: "IBM Plex Mono";
-$heading-font-family: "IBM Plex Serif";
+$heading-font-family: "kingthings_trypewriter_2Rg";
 $black: #5f6c7b;
 $darkblue: #094067;

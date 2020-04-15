@@ -1,8 +1,10 @@
 <template>
-  <v-row>
-    <v-col cols="12">
+  <v-row style="height:100%" direction="column" align="center" justify="center">
+    <v-col cols="12" md="6">
       <v-card>
         <v-card-text>
+          <h2 class="display-2 mb-4">{{ player.name }}</h2>
+          <v-divider class="my-2" />
           <v-chip-group column>
             <v-chip
               small
