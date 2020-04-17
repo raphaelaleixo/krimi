@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import VueQrcode from "@xkeshi/vue-qrcode";
+import "./registerServiceWorker";
 
 Vue.config.productionTip = false;
 Vue.component(VueQrcode.name, VueQrcode);
