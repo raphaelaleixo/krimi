@@ -37,15 +37,6 @@
           >
         </div>
         <div class="d-lg-flex mt-4">
-          <!-- <v-btn
-            text
-            class="mr-4 mb-4 mb-lg-0"
-            type="submit"
-            color="accent"
-            large
-            to="/join"
-            >{{ t("About this project") }}</v-btn
-          > -->
           <v-btn
             text
             class="mr-4 mb-4 mb-lg-0"
