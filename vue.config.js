@@ -11,12 +11,12 @@ module.exports = {
       favicon16: "./favicon-16x16.png",
       appleTouchIcon: "./apple-touch-icon.png",
       maskIcon: "./safari-pinned-tab.svg",
-      msTileImage: "./mstile-144x144.png",
+      msTileImage: "./mstile-144x144.png"
     },
     workboxOptions: {
       skipWaiting: true,
       navigateFallback: "/index.html",
-      exclude: ".htaccess",
-    },
-  },
+      exclude: ".htaccess"
+    }
+  }
 };

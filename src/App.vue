@@ -47,6 +47,10 @@ export default {
     letter-spacing: -2px !important;
     word-spacing: -10px;
   }
+  .display-1.display-1 {
+    letter-spacing: -2px !important;
+    word-spacing: -10px;
+  }
   .v-app-bar--is-scrolled {
     background-color: white !important;
   }

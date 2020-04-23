@@ -1,6 +1,6 @@
 <template>
-  <v-row style="height:100%" direction="column" align="center" justify="center">
-    <v-col cols="12" md="6">
+  <v-row style="height:100%" direction="column" justify="center">
+    <v-col class="mt-10" cols="12" md="6">
       <v-card>
         <v-card-text>
           <h2 class="display-2 mb-4">{{ player.name }}</h2>
@@ -31,26 +31,29 @@
           </v-chip-group>
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="sheet = !sheet" text>Role</v-btn>
-          <v-btn @click="passTurn" :disabled="disableActions" text
-            >Pass turn</v-btn
-          >
+          <v-btn @click="sheet = !sheet" text>{{ t("Role") }}</v-btn>
+          <v-btn @click="passTurn" :disabled="disableActions" text>{{
+            t("Pass turn")
+          }}</v-btn>
           <v-btn
             @click="solve = !solve"
             color="accent"
             :disabled="disableActions"
             text
-            >Solve</v-btn
+            >{{ t("Solve") }}</v-btn
           >
         </v-card-actions>
       </v-card>
     </v-col>
     <v-bottom-sheet inset v-model="sheet">
-      <v-sheet class="text-center" height="500px">
+      <v-sheet class="text-center" height="600px">
         <v-container>
-          <v-btn class="mt-6" dark @click="sheet = !sheet">close</v-btn>
-          <p class="headline mt-4">Your are {{ playerRole }}</p>
+          <v-btn class="mt-6" dark @click="sheet = !sheet">{{
+            t("close")
+          }}</v-btn>
+          <p class="headline mt-4">{{ t("Your are") }} {{ playerRole }}</p>
           <murderer-choice
+            @choice="this.sheet = false"
             v-if="player.index === game.murderer"
             :game="game"
             :player="player"
@@ -61,8 +64,10 @@
     <v-bottom-sheet inset v-model="solve">
       <v-sheet class="text-center" height="700px">
         <v-container>
-          <v-btn class="mt-6" dark @click="solve = !solve">close</v-btn>
-          <p class="headline mt-4">Solve the crime</p>
+          <v-btn class="mt-6" dark @click="solve = !solve">{{
+            t("close")
+          }}</v-btn>
+          <p class="headline mt-4">{{ t("Solve the crime") }}</p>
           <v-col cols="12">
             <v-card>
               <v-card-text>
@@ -70,7 +75,7 @@
                   class="mt-2"
                   :items="players"
                   v-model="guess.player"
-                  label="Who is the murderer?"
+                  :label="t('Who is the murderer?')"
                   item-text="name"
                   item-value="index"
                   solo
@@ -78,7 +83,7 @@
                 <v-row v-if="selectedPlayer">
                   <v-col cols="12" md="6">
                     <div class="text-left">
-                      Select the mean of murder:
+                      {{ t("Select the mean of murder:") }}
                       <v-chip-group column>
                         <v-chip
                           small
@@ -102,7 +107,7 @@
                   </v-col>
                   <v-col cols="12" md="6">
                     <div class="text-left">
-                      Select the key evidence:
+                      {{ t("Select the key evidence:") }}
                       <v-chip-group column>
                         <v-chip
                           small
@@ -126,7 +131,7 @@
                   </v-col>
                 </v-row>
                 <v-card-text>
-                  <v-btn @click="sendGuess">Send guess</v-btn>
+                  <v-btn @click="sendGuess">{{ t("Send guess") }}</v-btn>
                 </v-card-text>
               </v-card-text>
             </v-card>
@@ -160,6 +165,22 @@ export default {
       required: true
     }
   },
+  locales: {
+    pt_br: {
+      "the murderer": "o assassino",
+      "a detective": "um detetive",
+      "Your are": "Você é",
+      close: "fechar",
+      Role: "Papel",
+      "Pass turn": "Passar",
+      Solve: "Solucionar",
+      "Solve the crime": "Solucione o crime",
+      "Who is the murderer?": "Quem é o assassino?",
+      "Select the mean of murder:": "Selecione a causa de morte",
+      "Select the key evidence:": "Selecione a evidência principal",
+      "Send guess": "Mandar palpite"
+    }
+  },
   computed: {
     disableActions() {
       return (
@@ -169,9 +190,9 @@ export default {
     },
     playerRole() {
       if (this.player.index === this.game.murderer) {
-        return "the murderer";
+        return this.t("the murderer");
       } else {
-        return "a detective";
+        return this.t("a detective");
       }
     },
     players() {

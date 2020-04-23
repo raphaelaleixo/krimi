@@ -11,9 +11,9 @@
         <div v-if="!game.started">
           <h2 class="display-2">{{ player.name }}</h2>
           <p class="subtitle-1 my-4">
-            You are in room
+            {{ t("You are in room") }}
             <code class="accent--text text-uppercase">{{ game.gameId }}</code
-            >. Waiting for the game start.
+            >. {{ t("Waiting for the game start.") }}
           </p>
           <v-progress-linear
             indeterminate
@@ -39,6 +39,12 @@ import ForensicAnalysis from "@/components/ForensicAnalysis";
 import Detective from "@/components/Detective";
 export default {
   name: "Player",
+  locales: {
+    pt_br: {
+      "You are in room": "Você está na sala",
+      "Waiting for the game start.": "Esperando o jogo começar."
+    }
+  },
   components: { ForensicAnalysis, Detective },
   computed: {
     game() {
@@ -54,6 +60,7 @@ export default {
       game: this.$route.params.id,
       player: this.$route.params.slug
     });
+    this.$translate.setLang(this.game.lang);
   }
 };
 </script>

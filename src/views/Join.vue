@@ -5,9 +5,9 @@
         {{ errorText }}
       </v-alert>
       <v-col class="mt-6" cols="12" md="6">
-        <h2 class="display-2">Join game</h2>
+        <h2 class="display-2">{{ t("Join game") }}</h2>
         <p class="subtitle-1 my-4">
-          Enter a game code and a nickname to join a game:
+          {{ t("Enter a game code and a nickname to join a game:") }}
         </p>
         <form @submit.prevent="joinGame">
           <v-row>
@@ -15,7 +15,7 @@
               <v-text-field
                 width="100%"
                 v-model="gameId"
-                label="Game code"
+                :label="t('Game code')"
                 filled
                 hide-details="auto"
                 required
@@ -25,7 +25,7 @@
               <v-text-field
                 width="100%"
                 v-model="nickname"
-                label="Your nickname"
+                :label="t('Your nickname')"
                 hide-details="auto"
                 filled
                 required
@@ -35,9 +35,9 @@
               <v-btn class="mr-4 mb-4 mb-lg-0" x-large to="/">
                 <v-icon class="accent--text">mdi-arrow-left</v-icon>
               </v-btn>
-              <v-btn class="mb-4" type="submit" x-large color="accent"
-                >Enter game</v-btn
-              >
+              <v-btn class="mb-4" type="submit" x-large color="accent">{{
+                t("Enter game")
+              }}</v-btn>
             </v-col>
           </v-row>
         </form>
@@ -49,6 +49,16 @@
 <script>
 export default {
   name: "Home",
+  locales: {
+    pt_br: {
+      "Enter a game code and a nickname to join a game:":
+        "Digite o código do jogo e um apelido para entrar:",
+      "Your nickname": "Seu apelido",
+      "Game code": "Código do jogo",
+      "Join game": "Entrar em um jogo",
+      "Enter game": "Entrar no jogo"
+    }
+  },
   data: () => ({
     nickname: "",
     gameId: "",

@@ -3,7 +3,7 @@
     <v-col cols="12" md="6">
       <v-card height="100%">
         <v-card-text>
-          Select your means of murder:
+          {{ t("Select your means of murder:") }}
           <v-chip-group column>
             <v-chip
               small
@@ -30,7 +30,7 @@
     <v-col cols="12" md="6">
       <v-card height="100%">
         <v-card-text>
-          Select your key evidence:
+          {{ t("Select your key evidence:") }}
           <v-chip-group column>
             <v-chip
               small
@@ -58,7 +58,7 @@
       <v-btn
         @click="sendChoice"
         :disabled="!murdererChoice.mean || !murdererChoice.key"
-        >Send choice</v-btn
+        >{{ t("Send choice") }}</v-btn
       >
     </v-col>
   </v-row>
@@ -72,6 +72,13 @@ export default {
       key: null
     }
   }),
+  locales: {
+    pt_br: {
+      "Select your means of murder:": "Selecione a causa da morte:",
+      "Select your key evidence:": "Selecione a evidência principal:",
+      "Send choice": "Enviar escolha"
+    }
+  },
   props: {
     game: {
       type: Object,
@@ -88,6 +95,7 @@ export default {
         game: this.game.gamekey,
         choice: this.murdererChoice
       });
+      this.$emit("choice");
     }
   },
   mounted() {

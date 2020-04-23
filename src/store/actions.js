@@ -3,11 +3,14 @@ import rules from "@/api/rules";
 import means from "@/data/means";
 import clues from "@/data/clues";
 import analysis from "@/data/analysis";
+import meanspt_br from "@/data/means-ptbr";
+import cluespt_br from "@/data/clues-ptbr";
+import analysispt_br from "@/data/analysis-ptbr";
 
 import router from "@/router";
 
 export default {
-  createGame: async context => {
+  createGame: async (context, payload) => {
     const gameList = database.ref("/");
     const game = await gameList.push();
     const gamekey = game.getKey();
@@ -18,7 +21,8 @@ export default {
       gamekey,
       finished: false,
       availableClues: 6,
-      round: 1
+      round: 1,
+      lang: payload
     };
     await game.set(gameData);
     context.commit("setGame", gameData);
@@ -42,15 +46,36 @@ export default {
   },
 
   async startGame(context, payload) {
-    const gameMeans = rules.getRandom(means, payload.players.length * 4);
-    const gameClues = rules.getRandom(clues, payload.players.length * 4);
-    const analysisCause = analysis.filter(item => item.type === 0);
+    const gameclues = {
+      en: {
+        clues,
+        means,
+        analysis
+      },
+      pt_br: {
+        clues: cluespt_br,
+        means: meanspt_br,
+        analysis: analysispt_br
+      }
+    };
+    const lang = payload.lang || "en";
+    const gameMeans = rules.getRandom(
+      gameclues[lang].means,
+      payload.players.length * 4
+    );
+    const gameClues = rules.getRandom(
+      gameclues[lang].clues,
+      payload.players.length * 4
+    );
+    const analysisCause = gameclues[lang].analysis.filter(
+      item => item.type === 0
+    );
     const analysisLocation = rules.getRandom(
-      analysis.filter(item => item.type === 1),
+      gameclues[lang].analysis.filter(item => item.type === 1),
       1
     );
     const analysisOther = rules.getRandom(
-      analysis.filter(item => item.type === 2),
+      gameclues[lang].analysis.filter(item => item.type === 2),
       6
     );
     await database.ref("/" + payload.game).update({
@@ -129,8 +154,6 @@ export default {
     const playersPassed =
       (game.passedTurns && game.passedTurns.filter(item => item === true)) ||
       [];
-
-    console.log(validGuesses.length, playersPassed.length, players);
     if (
       game.guesses.filter(
         item =>
@@ -154,6 +177,15 @@ export default {
       await database.ref(`/${payload.game}`).update({
         finished: true,
         winner: "murderer"
+      });
+    } else {
+      const newRound = validGuesses.length + playersPassed.length === players.length - 1 ? game.round + 1 : game.round;
+      const newClues = validGuesses.length + playersPassed.length === players.length - 1 ? game.availableClues + 1 : game.availableClues;
+      console.log(validGuesses, playersPassed, players)
+      await database.ref(`/${payload.game}`).update({
+        passedTurns: new Array(players).fill(false),
+        availableClues: newClues,
+        round: newRound
       });
     }
   },

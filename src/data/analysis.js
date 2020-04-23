@@ -171,11 +171,6 @@ export default [
     ]
   },
   {
-    title: "In Progress",
-    type: 2,
-    options: ["Vacation home", "Park", "Supermarket", "School", "Woods", "Bank"]
-  },
-  {
     title: "Weather",
     type: 2,
     options: ["Sunny", "Stormy", "Dry", "Humid", "Cold", "Hot"]
@@ -238,7 +233,7 @@ export default [
       "Frightened",
       "In Pain",
       "Blank",
-      "Andry"
+      "Angry"
     ]
   },
   {

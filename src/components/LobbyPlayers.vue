@@ -44,6 +44,7 @@ export default {
   methods: {
     async makeDetective(player) {
       this.active = player;
+      this.$emit("change", player);
       await this.$store.dispatch("setDetective", {
         game: this.game.gamekey,
         player: this.active
