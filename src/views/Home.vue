@@ -37,7 +37,7 @@
           >
         </div>
         <div class="d-lg-flex mt-4">
-          <v-btn
+          <!-- <v-btn
             text
             class="mr-4 mb-4 mb-lg-0"
             type="submit"
@@ -45,12 +45,13 @@
             large
             to="/join"
             >{{ t("About this project") }}</v-btn
-          >
+          > -->
           <v-btn
             text
             class="mr-4 mb-4 mb-lg-0"
-            @click.prevent="createNewGame"
+            href="https://medium.com/@raphaelaleixo/krimi-how-to-play-87839028f5ef"
             type="submit"
+            target="_blank"
             large
             color="accent"
             >{{ t("How to play") }}</v-btn
@@ -93,7 +94,7 @@ export default {
       if (this.$translate.lang !== "pt_br") {
         this.$translate.setLang("pt_br");
       } else this.$translate.setLang("en");
-    }
+    },
   },
   locales: {
     pt_br: {
@@ -106,9 +107,9 @@ export default {
       "How to play": "Como jogar",
       "Join game": "Entrar em um jogo",
       "Create new game": "Criar novo jogo",
-      "Versão em português": "English version"
-    }
-  }
+      "Versão em português": "English version",
+    },
+  },
 };
 </script>
 
