@@ -56,14 +56,14 @@ export default {
       "Your nickname": "Seu apelido",
       "Game code": "Código do jogo",
       "Join game": "Entrar em um jogo",
-      "Enter game": "Entrar no jogo"
-    }
+      "Enter game": "Entrar no jogo",
+    },
   },
   data: () => ({
     nickname: "",
     gameId: "",
     error: false,
-    errorText: null
+    errorText: null,
   }),
   methods: {
     async joinGame() {
@@ -72,18 +72,18 @@ export default {
       const errorText = await this.$store.dispatch("addPlayer", {
         nickname: this.nickname,
         slug: this.nickname.replace(/\s+/g, "-").toLowerCase(),
-        gameId: this.gameId
+        gameId: this.gameId.toLowerCase(),
       });
       if (errorText) {
         this.error = true;
         this.errorText = errorText;
       }
-    }
+    },
   },
   mounted() {
     if (this.$route.query.room) {
       this.gameId = this.$route.query.room;
     }
-  }
+  },
 };
 </script>

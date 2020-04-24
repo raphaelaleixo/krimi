@@ -11,6 +11,10 @@
             :type-delay="120"
           />
         </h2>
+        <p class="credits">
+          {{ t("A web-version of Tobey Ho's") }}
+          <strong>Deception: Murder in Hong Kong</strong>.
+        </p>
         <p class="subtitle-1 mt-4 mb-10">
           {{
             t(
@@ -99,6 +103,7 @@ export default {
       "Join game": "Entrar em um jogo",
       "Create new game": "Criar novo jogo",
       "Versão em português": "English version",
+      "A web-version of Tobey Ho's": "Uma versão web do jogo de Tobey Ho",
     },
   },
 };
@@ -110,6 +115,10 @@ export default {
 }
 .vue-typer .custom.caret {
   background-color: #094067;
+}
+.credits {
+  margin: 0.5em 0;
+  font-size: 1.5em;
 }
 .vue-typer {
   display: block;
