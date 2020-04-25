@@ -50,6 +50,6 @@ npm run lint
 
 
 ## That’s it!
-You can play the game now at https://codewords.ludoratory.com. As I said, the code is on github. I am eager to hear any critiques, doubts, comments and suggestions you might have about the game, my code or the Ludoratory project.
+You can play the game now at https://krimi.ludoratory.com. I am eager to hear any critiques, doubts, comments and suggestions you might have about the game, my code or the Ludoratory project.
 
 Thank you, and I hope you enjoy the game.
