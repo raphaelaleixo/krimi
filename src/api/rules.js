@@ -7,7 +7,9 @@ export default {
 
   chooseRandomMurderer(players, detective) {
     const available = players.filter((item, index) => index !== detective);
-    return available[Math.floor(Math.random() * available.length)].index;
+    const allSlugs = players.map(item => item.slug);
+    const randomPlayer = available[Math.floor(Math.random() * available.length)].slug;
+    return allSlugs.indexOf(randomPlayer);
   },
 
   getRandom(arr, n) {

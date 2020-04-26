@@ -42,8 +42,8 @@ export default {
   locales: {
     pt_br: {
       "You are in room": "Você está na sala",
-      "Waiting for the game start.": "Esperando o jogo começar."
-    }
+      "Waiting for the game start.": "Esperando o jogo começar.",
+    },
   },
   components: { ForensicAnalysis, Detective },
   computed: {
@@ -52,15 +52,25 @@ export default {
     },
     player() {
       return this.$store.state.player;
-    }
+    },
   },
   methods: {},
   async mounted() {
     await this.$store.dispatch("loadPlayer", {
       game: this.$route.params.id,
-      player: this.$route.params.slug
+      player: this.$route.params.slug,
     });
     this.$translate.setLang(this.game.lang);
-  }
+  },
+  watch: {
+    async game(newValue, oldValue) {
+      if (!oldValue.started && newValue.started) {
+        await this.$store.dispatch("loadPlayer", {
+          game: this.$route.params.id,
+          player: this.$route.params.slug,
+        });
+      }
+    },
+  },
 };
 </script>

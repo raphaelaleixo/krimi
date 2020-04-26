@@ -78,13 +78,25 @@ export default {
       gameclues[lang].analysis.filter(item => item.type === 2),
       6
     );
-    await database.ref("/" + payload.game).update({
+
+    const players = payload.playersObj;
+    let iterate = 0;
+    for (let player in players) {
+      players[player] = {
+        index: iterate,
+        ...players[player]
+      };
+      iterate++;
+    }
+    const startedGame = {
       started: true,
       means: gameMeans,
       clues: gameClues,
+      players,
       analysis: [...analysisCause, ...analysisLocation, ...analysisOther],
       murderer: rules.chooseRandomMurderer(payload.players, payload.detective)
-    });
+    }
+    await database.ref("/" + payload.game).update(startedGame);
   },
 
   async setDetective(context, payload) {
@@ -221,29 +233,9 @@ export default {
     const playerData = {
       name: payload.nickname,
       slug: payload.slug,
-      index:
-        (loadedGame.players && Object.keys(loadedGame.players).length) || 0,
       playerkey
     };
-
     await player.set(playerData);
-    await player.on("value", snapshot => {
-      if (snapshot.val() === false) {
-        return;
-      }
-      player
-        .onDisconnect()
-        .update({
-          status: "offline"
-        })
-        .then(() => {
-          if (snapshot.val()) {
-            player.update({
-              status: "online"
-            });
-          }
-        });
-    });
     context.commit("setPlayer", playerData);
     router.push(`/game/${payload.gameId}/player/${payload.slug}`);
   },
@@ -266,15 +258,4 @@ export default {
       .then(snapshot => snapshot.val());
     context.commit("setPlayer", target);
   },
-
-  removePlayer: async (context, payload) => {
-    const game = payload.game;
-    const target = database
-      .ref(`/${game}/players`)
-      .orderByChild("slug")
-      .equalTo(payload.player)
-      .once("value");
-    target.off("value");
-    await target.remove();
-  }
 };

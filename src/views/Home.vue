@@ -47,16 +47,23 @@
             href="https://medium.com/@raphaelaleixo/krimi-how-to-play-87839028f5ef"
             type="submit"
             target="_blank"
-            large
             color="accent"
             >{{ t("How to play") }}</v-btn
           >
           <v-btn
             text
             class="mr-4 mb-4 mb-lg-0"
+            href="https://github.com/raphaelaleixo/krimi"
+            type="submit"
+            target="_blank"
+            color="accent"
+            >{{ t("About this project") }}</v-btn
+          >
+          <v-btn
+            text
+            class="mr-4 mb-4 mb-lg-0"
             @click.prevent="changeLocale"
             type="submit"
-            large
             color="accent"
             >{{ t("Versão em português") }}</v-btn
           >
