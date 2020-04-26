@@ -95,7 +95,7 @@ export default {
       players,
       analysis: [...analysisCause, ...analysisLocation, ...analysisOther],
       murderer: rules.chooseRandomMurderer(payload.players, payload.detective)
-    }
+    };
     await database.ref("/" + payload.game).update(startedGame);
   },
 
@@ -191,9 +191,15 @@ export default {
         winner: "murderer"
       });
     } else {
-      const newRound = validGuesses.length + playersPassed.length === players.length - 1 ? game.round + 1 : game.round;
-      const newClues = validGuesses.length + playersPassed.length === players.length - 1 ? game.availableClues + 1 : game.availableClues;
-      console.log(validGuesses, playersPassed, players)
+      const newRound =
+        validGuesses.length + playersPassed.length === players.length - 1
+          ? game.round + 1
+          : game.round;
+      const newClues =
+        validGuesses.length + playersPassed.length === players.length - 1
+          ? game.availableClues + 1
+          : game.availableClues;
+      console.log(validGuesses, playersPassed, players);
       await database.ref(`/${payload.game}`).update({
         passedTurns: new Array(players).fill(false),
         availableClues: newClues,
@@ -257,5 +263,5 @@ export default {
       .once("child_added")
       .then(snapshot => snapshot.val());
     context.commit("setPlayer", target);
-  },
+  }
 };

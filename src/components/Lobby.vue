@@ -40,7 +40,7 @@
               :options="{
                 size: 1000,
                 background: '#fff',
-                foreground: '#091619',
+                foreground: '#091619'
               }"
               :value="location"
             ></qrcode>
@@ -104,13 +104,13 @@ export default {
       Close: "Fechar",
       "Copy game url": "Copiar url do jogo ",
       "Join game": "Entrar em um jogo",
-      "Start game": "Começar jogo",
-    },
+      "Start game": "Começar jogo"
+    }
   },
   components: { LobbyPlayers },
   data: () => ({
     snackbar: false,
-    active: 0,
+    active: 0
   }),
   computed: {
     game() {
@@ -122,7 +122,7 @@ export default {
     players() {
       if (!this.game || !this.game.players) return false;
       return Object.keys(this.game.players).map(
-        (item) => this.game.players[item]
+        item => this.game.players[item]
       );
     },
     playerCount() {
@@ -131,7 +131,7 @@ export default {
       else if (this.players.length === 1)
         return `${this.players.length} ${this.t("player joined.")}`;
       else return `${this.players.length} ${this.t("players joined.")}`;
-    },
+    }
   },
   methods: {
     changeDetective(evt) {
@@ -143,18 +143,18 @@ export default {
         playersObj: this.game.players,
         players: this.players,
         detective: this.active,
-        lang: this.$translate.lang,
+        lang: this.$translate.lang
       });
     },
     copyText(text) {
       copyTextToClipboard(text);
       this.snackbar = true;
-    },
+    }
   },
   async mounted() {
     await this.$store.dispatch("loadGame", this.$route.params.id);
     this.$translate.setLang(this.game.lang);
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>
