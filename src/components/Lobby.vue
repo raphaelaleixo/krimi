@@ -42,7 +42,7 @@
                 background: '#fff',
                 foreground: '#091619',
               }"
-              :value="`${location}/join?room=${game.gameId}`"
+              :value="location"
             ></qrcode>
             <v-btn
               @click="copyText(location)"
