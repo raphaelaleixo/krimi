@@ -120,32 +120,12 @@ export default {
   async passTurn(context, payload) {
     const game = context.state.game;
     const players = Object.keys(game.players).length;
-    const validGuesses =
-      (game.guesses && game.guesses.filter(item => item.key)) || [];
     const turnsArray = game.passedTurns || new Array(players).fill(false);
-
-    if (
-      turnsArray.filter(item => item === true).length + validGuesses.length <
-      players - 2
-    ) {
-      turnsArray[payload.player.index] = true;
-      await database.ref(`/${payload.game}`).update({
-        passedTurns: turnsArray
-      });
-    } else {
-      if (game.round <= 3) {
-        await database.ref(`/${payload.game}`).update({
-          passedTurns: new Array(players).fill(false),
-          availableClues: game.availableClues + 1,
-          round: game.round + 1
-        });
-      } else {
-        await database.ref(`/${payload.game}`).update({
-          finished: true,
-          winner: "murderer"
-        });
-      }
-    }
+    turnsArray[payload.player.index] = true;
+    await database.ref(`/${payload.game}`).update({
+      passedTurns: turnsArray
+    });
+    context.dispatch("checkEndGame", payload);
   },
 
   async makeGuess(context, payload) {
@@ -192,16 +172,20 @@ export default {
       });
     } else {
       const newRound =
-        validGuesses.length + playersPassed.length === players.length - 1
+        validGuesses.length + playersPassed.length === players - 1
           ? game.round + 1
           : game.round;
       const newClues =
-        validGuesses.length + playersPassed.length === players.length - 1
+        validGuesses.length + playersPassed.length === players - 1
           ? game.availableClues + 1
           : game.availableClues;
+      const clearPass =
+        validGuesses.length + playersPassed.length === players - 1
+          ? new Array(players).fill(false)
+          : game.passedTurns;
       console.log(validGuesses, playersPassed, players);
       await database.ref(`/${payload.game}`).update({
-        passedTurns: new Array(players).fill(false),
+        passedTurns: clearPass,
         availableClues: newClues,
         round: newRound
       });
