@@ -64,7 +64,7 @@ export default {
   },
   watch: {
     async game(newValue, oldValue) {
-      if (!oldValue.started && newValue.started) {
+      if (oldValue && !oldValue.started && newValue.started) {
         await this.$store.dispatch("loadPlayer", {
           game: this.$route.params.id,
           player: this.$route.params.slug,

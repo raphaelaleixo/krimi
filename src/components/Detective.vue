@@ -62,7 +62,11 @@
       </v-sheet>
     </v-bottom-sheet>
     <v-bottom-sheet inset v-model="solve">
-      <v-sheet class="text-center" height="700px">
+      <v-sheet
+        class="text-center"
+        height="500px"
+        style="height:500px; overflow-y:auto;"
+      >
         <v-container>
           <v-btn class="mt-6" dark @click="solve = !solve">{{
             t("close")
@@ -71,6 +75,7 @@
           <v-col cols="12">
             <v-card>
               <v-card-text>
+                {{ t("Who is the murderer?") }}
                 <v-select
                   class="mt-2"
                   :items="players"
@@ -152,18 +157,18 @@ export default {
     guess: {
       player: null,
       mean: null,
-      key: null
-    }
+      key: null,
+    },
   }),
   props: {
     game: {
       type: Object,
-      required: true
+      required: true,
     },
     player: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   locales: {
     pt_br: {
@@ -178,8 +183,8 @@ export default {
       "Who is the murderer?": "Quem é o assassino?",
       "Select the mean of murder:": "Selecione a causa de morte",
       "Select the key evidence:": "Selecione a evidência principal",
-      "Send guess": "Mandar palpite"
-    }
+      "Send guess": "Mandar palpite",
+    },
   },
   computed: {
     disableActions() {
@@ -197,33 +202,33 @@ export default {
     },
     players() {
       return Object.keys(this.game.players)
-        .map(item => this.game.players[item])
+        .map((item) => this.game.players[item])
         .filter(
-          item =>
+          (item) =>
             item.index !== this.game.detective &&
             item.index !== this.player.index
         );
     },
     selectedPlayer() {
-      return this.players.find(item => item.index === this.guess.player);
-    }
+      return this.players.find((item) => item.index === this.guess.player);
+    },
   },
   methods: {
     async passTurn() {
       await this.$store.dispatch("passTurn", {
         game: this.game.gamekey,
-        player: this.player
+        player: this.player,
       });
     },
     async sendGuess() {
       await this.$store.dispatch("makeGuess", {
         game: this.game.gamekey,
         player: this.player,
-        guess: this.guess
+        guess: this.guess,
       });
       this.solve = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
