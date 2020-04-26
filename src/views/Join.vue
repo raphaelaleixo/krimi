@@ -35,9 +35,14 @@
               <v-btn class="mr-4 mb-4 mb-lg-0" x-large to="/">
                 <v-icon class="accent--text">mdi-arrow-left</v-icon>
               </v-btn>
-              <v-btn class="mb-4" type="submit" x-large color="accent">{{
-                t("Enter game")
-              }}</v-btn>
+              <v-btn
+                class="mb-4"
+                :disabled="disabled"
+                type="submit"
+                x-large
+                color="accent"
+                >{{ t("Enter game") }}</v-btn
+              >
             </v-col>
           </v-row>
         </form>
@@ -63,10 +68,12 @@ export default {
     nickname: "",
     gameId: "",
     error: false,
+    disabled: false,
     errorText: null,
   }),
   methods: {
     async joinGame() {
+      this.disabled = true;
       this.errorText = null;
       this.error = false;
       const errorText = await this.$store.dispatch("addPlayer", {
@@ -77,6 +84,7 @@ export default {
       if (errorText) {
         this.error = true;
         this.errorText = errorText;
+        this.disabled = false;
       }
     },
   },
