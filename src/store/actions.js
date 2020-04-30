@@ -142,11 +142,13 @@ export default {
   async checkEndGame(context, payload) {
     const game = context.state.game;
     const players = Object.keys(game.players).length;
-    const validGuesses = game.guesses.filter(item => item.key);
+    const validGuesses =
+      (game.guesses && game.guesses.filter(item => item.key)) || [];
     const playersPassed =
       (game.passedTurns && game.passedTurns.filter(item => item === true)) ||
       [];
     if (
+      game.guesses &&
       game.guesses.filter(
         item =>
           item.mean === game.murdererChoice.mean &&
