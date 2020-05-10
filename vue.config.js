@@ -6,7 +6,33 @@ module.exports = {
     msTileColor: "#FFFFFE",
     appleMobileWebAppCapable: "yes",
     appleMobileWebAppStatusBarStyle: "white",
-    iconsPath: {
+    manifestOptions: {
+      icons: [
+        {
+          src: "./android-chrome-192x192.png",
+          sizes: "192x192",
+          type: "image/png"
+        },
+        {
+          src: "./android-chrome-512x512.png",
+          sizes: "512x512",
+          type: "image/png"
+        },
+        {
+          src: "./android-chrome-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+          purpose: "maskable"
+        },
+        {
+          src: "./android-chrome-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "maskable"
+        }
+      ]
+    },
+    iconPaths: {
       favicon32: "./favicon-32x32.png",
       favicon16: "./favicon-16x16.png",
       appleTouchIcon: "./apple-touch-icon.png",
@@ -14,9 +40,7 @@ module.exports = {
       msTileImage: "./mstile-144x144.png"
     },
     workboxOptions: {
-      skipWaiting: true,
-      navigateFallback: "/index.html",
-      exclude: ".htaccess"
+      exclude: [/\.css.map$/, ".htaccess"]
     }
   }
 };
