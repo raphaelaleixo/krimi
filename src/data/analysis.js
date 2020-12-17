@@ -7,7 +7,7 @@ export default [
       "Severe injury",
       "Loss of blood",
       "Illness/disease",
-      "Posioning",
+      "Poisoning",
       "Accident"
     ]
   },
@@ -97,7 +97,7 @@ export default [
     title: "Duration of Crime",
     type: 2,
     options: [
-      "Instanteous",
+      "Instantaneous",
       "Brief",
       "Gradual",
       "Prolonged",

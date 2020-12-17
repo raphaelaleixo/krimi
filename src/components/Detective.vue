@@ -51,7 +51,7 @@
           <v-btn class="mt-6" dark @click="sheet = !sheet">{{
             t("close")
           }}</v-btn>
-          <p class="headline mt-4">{{ t("Your are") }} {{ playerRole }}</p>
+          <p class="headline mt-4">{{ t("You are") }} {{ playerRole }}</p>
           <murderer-choice
             @choice="this.sheet = false"
             v-if="player.index === game.murderer"
@@ -88,7 +88,7 @@
                 <v-row v-if="selectedPlayer">
                   <v-col cols="12" md="6">
                     <div class="text-left">
-                      {{ t("Select the mean of murder:") }}
+                      {{ t("Select the means of murder:") }}
                       <v-chip-group column>
                         <v-chip
                           small
@@ -174,14 +174,14 @@ export default {
     pt_br: {
       "the murderer": "o assassino",
       "a detective": "um detetive",
-      "Your are": "Você é",
+      "You are": "Você é",
       close: "fechar",
       Role: "Papel",
       "Pass turn": "Passar",
       Solve: "Solucionar",
       "Solve the crime": "Solucione o crime",
       "Who is the murderer?": "Quem é o assassino?",
-      "Select the mean of murder:": "Selecione a causa de morte",
+      "Select the means of murder:": "Selecione a causa de morte",
       "Select the key evidence:": "Selecione a evidência principal",
       "Send guess": "Mandar palpite"
     }
