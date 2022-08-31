@@ -118,7 +118,7 @@ export default [
       "Creative",
       "Fishy",
       "Cruel",
-      "Horrrible",
+      "Horrible",
       "Suspenseful"
     ]
   },
